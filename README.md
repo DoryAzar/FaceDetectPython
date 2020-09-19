@@ -33,6 +33,13 @@ Artificial Intelligence (AI) and Machine Learning in particular don't have to be
 
 ## Credits & Resources
 
++ **Face Recognition by Adam Geitgey**
+
+    The face-recognition python library was created by Adam Geitgey with a thorough documentation that helped us understand how to use the library. 
+    
+    [Face Recognition Documentation](https://face-recognition.readthedocs.io/en/latest/usage.html)
+
++ **Open CV**: [Open CV Documentation](https://docs.opencv.org/master/)
 
 <br />
 
@@ -77,6 +84,23 @@ Open source computer vision library that provides machine AI vision
 
 ### Installation
 
+You can install the FaceDetect application from github
+```
+git clone https://github.com/DoryAzar/FaceDetectPython
+```
+
+### Running the program
+
++ Using the terminal
+
+    ```
+       python facedetect.py
+    ```
++ Using Anaconda
+
+    - After installing the dependencies, set up a new Anaconda project with a Python 3.8 Virtual Environment. 
+    
+    - Run `facedetect.py`
 
 
 <br />

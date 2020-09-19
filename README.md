@@ -1,4 +1,4 @@
-# FaceDetect: Face detection & recognition framework
+# FaceDetect: Face detection & recognition
 + By: Dory Azar
 + Video Demo: 
 + Live Demo: 

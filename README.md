@@ -42,24 +42,33 @@ Artificial Intelligence (AI) and Machine Learning in particular don't have to be
 
 There are several libraries and packages needed to run this program successfully.  We will provide the instructions for how to download on a Mac/Linux machines:
 
-#### **Python 3.8+**: This program and its dependencies have only been tested with Python 3.8 
+#### Python 3.8+
+This program and its dependencies have only been tested with Python 3.8 
 
-#### **cmake**: In order to successfully install and build all the dependencies locally, CMake needs to be installed for python
+#### cmake
+
+In order to successfully install and build all the dependencies locally, CMake needs to be installed for python
 ```bash
     // Use Homebrew to install Cmake
     brew install cmake
 ```
-#### **dlib**: C++ library that provides machine learning tools to be used in several other languages such as python.
+#### dlib 
+
+C++ library that provides machine learning tools to be used in several other languages such as python.
 ```
     // use pip to install dlib
     python -m pip install dlib
 ``` 
-#### **face-recognition**: library built on top of dlib that facilitates the usage of face detection and face recognition
+#### face-recognition
+
+library built on top of dlib that facilitates the usage of face detection and face recognition
 ```
     // use pip to install face-recognition
     pip install face-recognition
 ```
-#### **Open CV**: Open source computer vision library that provides machine AI vision
+#### Open CV
+
+Open source computer vision library that provides machine AI vision
 ```
     //use pip to install opencv
     pip install opencv-python

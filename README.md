@@ -25,9 +25,20 @@ Detecting human faces and recognizing faces and facial expressions have always b
 
 However, machine learning remains a relatively complex field that could feel intimidating or inaccessible to many of us. Luckily, in the last couple of years, several organizations and open source communities have been developing tools and libraries that help abstract the complex mathematical algorithms in order to encourage developers to easily create learning models and train them using any programming languages. 
 
-As part of this project, I created a Python framework built on top of the work of several open source projects and models with the hope to reduce the entry barrier for developers and to encourage them to focus more on developing innovative applications that make use of face detection and recognition.
+As part of this project, we will create a Python framework built on top of the work of several open source projects and models with the hope to reduce the entry barrier for developers and to encourage them to focus more on developing innovative applications that make use of face detection and recognition.
 
 Artificial Intelligence (AI) and Machine Learning in particular don't have to be difficult and we hope that the FaceDetect framework gives developers the means to include face detection and recognition in a seamless way in their applications.
+
+
+The framework aims to provide an easy way for developers to  detect faces, facial features and recognize faces from an image, a video or a live cam stream. 
+
+Here are some of the features that we are considering. We will try to do as many as time allows:
++ Detect faces in an image, video or live webcam
++ Detect facial features (eyes, noses, ears etc.) 
++ Line drawings of faces detected in images, videos or live webcams
++ Recognize previously saved faces in an image, video or live webcam 
++ Create a face signature from a live webcam and recognize that face in the live stream
++ Generate live detections in a JSON format for extensibility
 
 <br />
 
@@ -35,11 +46,11 @@ Artificial Intelligence (AI) and Machine Learning in particular don't have to be
 
 + **Face Recognition by Adam Geitgey**
 
-    The face-recognition python library was created by Adam Geitgey with a thorough documentation that helped us understand how to use the library. 
+    The face-recognition python library was created by Adam Geitgey. It uses deep learning for face detection and recognition using the Python **dlib** library. 
     
     [Face Recognition Documentation](https://face-recognition.readthedocs.io/en/latest/usage.html)
 
-+ **Open CV**: [Open CV Documentation](https://docs.opencv.org/master/)
++ **Open CV**: [Open CV Documentation](https://docs.opencv.org/master/) While Open CV is a great library to implement face detection and recognition, it will mainly be used in this project for capture a stream from the webcam.
 
 <br />
 

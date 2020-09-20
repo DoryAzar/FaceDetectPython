@@ -105,13 +105,6 @@ git clone https://github.com/DoryAzar/FaceDetectPython
 
 <br />
 
-### Testing the package
-
-
-<br />
-
-
-<br />
 
 ## Let's get through the basics
 

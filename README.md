@@ -9,8 +9,8 @@
 
 ## Content
 
-+ [What is it?](https://github.com/DoryAzar/FaceDetectPython#what-is-it)
-+ [Credits & Resources](https://github.com/DoryAzar/FaceDetectPython#credits--resources)
++ [Project Synopsis](https://github.com/DoryAzar/FaceDetectPython#what-is-it)
++ [Resources](https://github.com/DoryAzar/FaceDetectPython#credits--resources)
 + [Let's get started](https://github.com/DoryAzar/FaceDetectPython#lets-get-started)
 + [Let's get through the basics](https://github.com/DoryAzar/FaceDetectPython#lets-get-through-the-basics)
 + [Let's have some fun](https://github.com/DoryAzar/FaceDetectPython#lets-have-some-fun)
@@ -19,7 +19,7 @@
 
 <br />
 
-## What is it?
+## Project Synopsis
 
 Detecting human faces and recognizing faces and facial expressions have always been an area of interest for different applications such as games, utilities and even security. With the advancement of machine learning, the techniques of detection and recognition have become more accurate and precise than ever before.
 

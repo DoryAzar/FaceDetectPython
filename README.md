@@ -9,13 +9,13 @@
 
 ## Content
 
-+ [What is it?]()
-+ [Credits & Resources]()
-+ [Let's get started]()
-+ [Let's get through the basics]()
-+ [Let's have some fun]()
-+ [Final Thoughts]()
-+ [Known Issues]()
++ [What is it?](https://github.com/DoryAzar/FaceDetectPython#what-is-it)
++ [Credits & Resources](https://github.com/DoryAzar/FaceDetectPython#credits--resources)
++ [Let's get started](https://github.com/DoryAzar/FaceDetectPython#lets-get-started)
++ [Let's get through the basics](https://github.com/DoryAzar/FaceDetectPython#lets-get-through-the-basics)
++ [Let's have some fun](https://github.com/DoryAzar/FaceDetectPython#lets-have-some-fun)
++ [Final Thoughts](https://github.com/DoryAzar/FaceDetectPython#final-thoughts)
++ [Known Issues](https://github.com/DoryAzar/FaceDetectPython#known-issues)
 
 <br />
 

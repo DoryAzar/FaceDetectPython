@@ -48,7 +48,7 @@ Here are some of the features that we are considering. We will try to do as many
 
     The face-recognition python library was created by Adam Geitgey. It uses deep learning for face detection and recognition using the Python **dlib** library. 
     
-    [Face Recognition Documentation](https://face-recognition.readthedocs.io/en/latest/usage.html)
+    [Face Recognition Documentation](https://face-recognition.readthedocs.io/en/latest/index.html)
 
 + **Open CV**: [Open CV Documentation](https://docs.opencv.org/master/) While Open CV is a great library to implement face detection and recognition, it will mainly be used in this project for capture a stream from the webcam.
 

@@ -9,8 +9,8 @@
 
 ## Content
 
-+ [Project Synopsis](https://github.com/DoryAzar/FaceDetectPython#what-is-it)
-+ [Resources](https://github.com/DoryAzar/FaceDetectPython#credits--resources)
++ [Project Synopsis](https://github.com/DoryAzar/FaceDetectPython#project-synopsis)
++ [Resources](https://github.com/DoryAzar/FaceDetectPython#resources)
 + [Let's get started](https://github.com/DoryAzar/FaceDetectPython#lets-get-started)
 + [Let's get through the basics](https://github.com/DoryAzar/FaceDetectPython#lets-get-through-the-basics)
 + [Let's have some fun](https://github.com/DoryAzar/FaceDetectPython#lets-have-some-fun)

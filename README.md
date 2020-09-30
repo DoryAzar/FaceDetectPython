@@ -25,7 +25,7 @@ Detecting human faces and recognizing faces and facial expressions have always b
 
 However, machine learning remains a relatively complex field that could feel intimidating or inaccessible to many of us. Luckily, in the last couple of years, several organizations and open source communities have been developing tools and libraries that help abstract the complex mathematical algorithms in order to encourage developers to easily create learning models and train them using any programming languages. 
 
-As part of this project, we will create a Python framework built on top of the work of several open source projects and models with the hope to reduce the entry barrier for developers and to encourage them to focus more on developing innovative applications that make use of face detection and recognition.
+As part of this project, we will create a Face Detection framework in Python built on top of the work of several open source projects and models with the hope to reduce the entry barrier for developers and to encourage them to focus more on developing innovative applications that make use of face detection and recognition.
 
 Artificial Intelligence (AI) and Machine Learning in particular don't have to be difficult and we hope that the FaceDetect framework gives developers the means to include face detection and recognition in a seamless way in their applications.
 
@@ -42,7 +42,7 @@ Here are some of the features that we are considering. We will try to do as many
 
 <br />
 
-## Credits & Resources
+## Resources
 
 + **Face Recognition by Adam Geitgey**
 
@@ -62,7 +62,7 @@ Here are some of the features that we are considering. We will try to do as many
 
 ### Requirements
 
-There are several libraries and packages needed to run this program successfully.  We will provide the instructions for how to download on a Mac/Linux machines:
+There are several libraries and packages needed to run this program successfully.  We will provide the instructions on how to download on a Mac/Linux machines:
 
 #### Python 3.8+
 This program and its dependencies have only been tested with Python 3.8 

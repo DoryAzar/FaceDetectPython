@@ -1,0 +1,58 @@
+Metadata-Version: 2.0
+Name: facedetection
+Version: 1.2
+Summary: The facial recognition
+Home-page: https://github.com/TakesxiSximada/facedetection
+Author: TakesxiSximada
+Author-email: sximada+facedetection@gmail.com
+License: Apache License 2.0
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development
+Requires-Dist: furl
+Requires-Dist: google-api-python-client
+Requires-Dist: oauth2client
+Requires-Dist: pillow
+Requires-Dist: requests
+Requires-Dist: zope.interface
+
+facedetection
+=============
+
+It returns the position by the facial recognition.
+
+Install
+-------
+
+::
+
+   $ pip install facedetection
+
+How to use it
+--------------
+
+Supported API
+
+- Google Vision Face Detection API
+- Microsoft Projectoxford Detection API
+- Akamai Image Converter API
+
+::
+
+   >>> from facedetection import MSProjectoxfordDetection
+   >>> detect = MSProjectoxfordDetection('YOUR API TOKEN')
+   >>> detect('http://your.image.url/path/to/image')
+
+
+Contributors
+------------
+
+- peketamin
+
+

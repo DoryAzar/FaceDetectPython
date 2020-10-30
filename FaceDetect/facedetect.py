@@ -26,6 +26,8 @@ class FaceDetect():
             for setting in settings:
                 setting = setting.lower()
                 val = settings[setting].lower().strip()
+
+                # Add to the settings only if values are provided
                 if val:
                     self.settings[setting] = val
 

@@ -104,18 +104,18 @@ You can install the FaceDetect application from github
 git clone https://github.com/DoryAzar/FaceDetectPython
 ```
 
-### Running the program
+### Testing the installation
 
 + Using the terminal
 
     ```
-       python facedetect.py
+       python main.py
     ```
 + Using Anaconda
 
     - After installing the dependencies, set up a new Anaconda project with a Python 3.8 Virtual Environment. 
     
-    - Run `facedetect.py`
+    - Run `main.py`
 
 
 <br />

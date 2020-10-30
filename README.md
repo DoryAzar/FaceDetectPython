@@ -117,7 +117,7 @@ It can be run either in the terminal or using Anaconda PyCharm
 + Using Anaconda PyCharm
 
     - After installing the dependencies, set up a new Anaconda project with a Python 3.8 Virtual Environment. 
-    
+    - Make sure to create a fresh new virtual environment in the folder containing the FaceDetect distribution
     - Run `main.py`
 
 

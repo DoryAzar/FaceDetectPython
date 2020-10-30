@@ -4,19 +4,27 @@
 # Import the FaceDetect class
 from FaceDetect.facedetect import FaceDetect
 
+
 # Initialize FaceDetect
 # Params:
 # - settings (optional): Dictionary with settings to be passed to the FaceDetector
-# - app (optional): Callback function that can be defined and called from the main
-# and that will run at every detection interval
+#   * mode:  image or video (default)
+#   * custom: False (default). Set to True when the FaceDetect class is extended
+#   * method: call native callback methods during detection or bypass with a custom method
+#   * draw: draws the detection on the canvas if set to True (default)
+#
+class MyDetector(FaceDetect):
+    def recognize(self):
+        print(self.detections)
 
-facedetector = FaceDetect()
+
+facedetector = FaceDetect({'mode': 'image'})
 
 try:
     # When the start method is not given an image or video path, it starts the webcam
     # For Image file: facedetector.start('<path to image file>')
     # For Video: facedetector.start('<path to video file>')
-    facedetector.start()
+    facedetector.start('resources/people.jpg')
 
 
 # FaceDetect always generates TypeError exceptions

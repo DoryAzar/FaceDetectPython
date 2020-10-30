@@ -13,7 +13,12 @@ from FaceDetect.facedetect import FaceDetect
 facedetector = FaceDetect()
 
 try:
+    # When the start method is not given an image or video path, it starts the webcam
+    # For Image file: facedetector.start('<path to image file>')
+    # For Video: facedetector.start('<path to video file>')
     facedetector.start()
 
+
+# FaceDetect always generates TypeError exceptions
 except TypeError as error:
     print(error)

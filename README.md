@@ -106,12 +106,15 @@ git clone https://github.com/DoryAzar/FaceDetectPython
 
 ### Testing the installation
 
+The `main.py` script provided with the distribution provides an initial boiler plate main to test out the installation.
+It can be run either in the terminal or using Anaconda PyCharm
+
 + Using the terminal
 
     ```
        python main.py
     ```
-+ Using Anaconda
++ Using Anaconda PyCharm
 
     - After installing the dependencies, set up a new Anaconda project with a Python 3.8 Virtual Environment. 
     

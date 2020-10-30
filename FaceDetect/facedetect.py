@@ -13,7 +13,7 @@ class FaceDetect():
     """ FaceDetect framework that provides tools and features to detect and recognize faces in different media """
 
     def __init__(self, settings=None, app=None):
-        """Initialize the Face Detect framework"""
+        """Initializes the Face Detect framework"""
 
         # Initialize default properties
         self.canvas = cv2
@@ -54,11 +54,11 @@ class FaceDetect():
                 if self.canvas.waitKey(1) & 0xFF == ord('q'):
                     return
 
-        except self.canvas.error:
-            raise IOError("We are unable to start FaceDetect")
-
         except TypeError as error:
             raise error
+
+        except self.canvas.error:
+            raise TypeError("We are unable to start FaceDetect")
 
     def __capture(self, media_input=''):
         """ Captures video, image or webcam """

@@ -9,7 +9,7 @@
 import cv2
 
 
-class FaceDetect():
+class FaceDetect:
     """ FaceDetect framework that provides tools and features to detect and recognize faces in different media """
 
     def __init__(self, settings=None, app=None):
@@ -45,7 +45,7 @@ class FaceDetect():
                 ret, frame = self.stream.read()
                 if ret:
                     # small_frame = self.canvas.resize(frame, (0, 0), fx=0.25, fy=0.25)
-                    self.canvas.imshow('image', frame)
+                    self.canvas.imshow('FaceDetect', frame)
 
                 # Run the desired app
                 self.app()

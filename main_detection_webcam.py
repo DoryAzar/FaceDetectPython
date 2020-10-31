@@ -17,7 +17,7 @@ from FaceDetect.facedetect import FaceDetect
 
 
 # Passing settings (the default ones are being passed for comparison purposes with main.py)
-facedetector = FaceDetect({'mode': 'video', 'custom': True, 'method': 'detect', 'draw': True})
+facedetector = FaceDetect({'mode': 'video', 'custom': False, 'method': 'detect', 'draw': True})
 
 try:
     # When the start method is not given an image or video path, it starts the webcam

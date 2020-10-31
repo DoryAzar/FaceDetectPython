@@ -141,6 +141,8 @@ What we do with the detections is really what this framework is all about.
 On one hand, it provides cool native features such as drawing rectangles around them, labeling them, recognizing the faces etc.
 On the other, it provides a way to extend its capabilities by writing custom features
 
+![](https://github.com/DoryAzar/FaceDetectPython/blob/master/outputs/main_detection_webcam_output.png)
+
 #### Getting Started with FaceDetect
 
 1. Start by creating a new python script file in the root of the distribution folder FaceDetectPython (similarly to main.py that is provided with the distribution)

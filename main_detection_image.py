@@ -1,5 +1,5 @@
-# main.py
-# Usage: %python main.py
+# main_detection_image.py
+# Usage: %python main_detection_image.py
 
 # Import the FaceDetect class
 from FaceDetect.facedetect import FaceDetect
@@ -15,14 +15,14 @@ from FaceDetect.facedetect import FaceDetect
 #
 
 
-facedetector = FaceDetect()
+facedetector = FaceDetect({'mode': 'image'})
 
 try:
     # When the start method is not given an image or video path, it starts the webcam
     # For Image file: facedetector.start('<path to image file>')
     # For Video: facedetector.start('<path to video file>')
     # Press 'q' to exit
-    facedetector.start()
+    facedetector.start('resources/people.jpg')
 
 
 # FaceDetect always generates TypeError exceptions

@@ -1,8 +1,9 @@
-# main.py
-# Usage: %python main.py
+# main_detection_webcam.py
+# Usage: %python main_detection_webcam.py
+
+from FaceDetect.facedetect import FaceDetect
 
 # Import the FaceDetect class
-from FaceDetect.facedetect import FaceDetect
 
 
 # Initialize FaceDetect
@@ -14,8 +15,8 @@ from FaceDetect.facedetect import FaceDetect
 #   * draw: draws the detection on the canvas if set to True (default)
 #
 
-
-facedetector = FaceDetect()
+# Passing settings (the default ones are being passed for comparison purposes with main.py)
+facedetector = FaceDetect({'mode': 'video', 'custom': False, 'method': 'detect', 'draw': True})
 
 try:
     # When the start method is not given an image or video path, it starts the webcam

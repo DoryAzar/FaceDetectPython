@@ -134,6 +134,14 @@ Detection and Recognition are two different concepts. While both use machine lea
 
 + **Face recognition**: Recognition is about identifying who the human face is among all other faces and things perceived. So for example, Face recognition is when the system is capable of pointing out "Flash" among all other superheroes in a picture or a video.
 
+### Understanding the framework
+
+FaceDetect relies on an important principle: "First you detect then you do something with the detections". 
+What we do with the detections is really what this framework is all about.
+On one hand, it provides cool native features such as drawing rectangles around them, labeling them, recognizing the faces etc.
+On the other, it provides a way to extend its capabilities by writing custom features
+
+
 
 <br />
 

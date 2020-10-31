@@ -1,8 +1,9 @@
 # main_detection_webcam.py
-# Usage: %python main_detection_webcam.py
+# Usage: %python main_detection_webcam_extended.py
 
 # Import the FaceDetect class
 from FaceDetect.facedetect import FaceDetect
+
 
 # Initialize FaceDetect
 # Params:
@@ -14,8 +15,14 @@ from FaceDetect.facedetect import FaceDetect
 #
 
 
+class MyDetector(FaceDetect):
+    # example of a method that print the detections property from FaceDetect
+    def main(self):
+        print(self.detections)
+
+
 # Passing settings (the default ones are being passed for comparison purposes with main.py)
-facedetector = FaceDetect({'mode': 'video', 'custom': False, 'method': 'detect', 'draw': True})
+facedetector = MyDetector({'custom': True, 'method': 'main'})
 
 try:
     # When the start method is not given an image or video path, it starts the webcam

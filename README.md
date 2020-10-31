@@ -146,19 +146,87 @@ On the other, it provides a way to extend its capabilities by writing custom fea
 1. Start by creating a new python script file in the root of the distribution folder FaceDetectPython (similarly to main.py that is provided with the distribution)
 2. The first thing that you need to do is to import the FaceDetect package:
 
-        ```
-           from FaceDetect.facedetect import FaceDetect 
+    ```python
+   
+    from FaceDetect.facedetect import FaceDetect 
+   
+    ```
            
-        ```
-
 3. Instantiate a FaceDetect object. A `settings` string in a JSON format can be passed to the constructor to use different features of FaceDetect. Initially, we will not pass any to run FaceDetect in its default settings.
         
-        ```
-        facedetector = FaceDetect()
-        
-        ```
-     
+     ```python
+   
+     # Instantiate a FaceDetect with the default settings
+     facedetector = FaceDetect()
+   
+4. Start the detections 
+
+    ```python
+    try:
+        # When the start method is not given an image or video path, it starts the webcam
+        # For Image file: facedetector.start('<path to image file>')
+        # For Video: facedetector.start('<path to video file>')
+        # Press 'q' to exit
+        facedetector.start()
     
+    
+    # FaceDetect always generates TypeError exceptions
+    except TypeError as error:
+        print(error)
+    
+    ```
+ 5. This will start capturing from a video from the webcam and human faces will be highlighted in the video with a blue rectangle surrounding them.
+ This code can be found in the the `main.py` script that is in the distribution
+ 
+    We will explore more capabilities in the `Let's have some fun` section
+
+<br />
+
+#### Extending the capabilities of FaceDetect
+
+FaceDetect provides you with a way to extend its capabilities by implementing your own code on top of the package.
+In order to do that you will need extend the FaceDetect class.
+
+1. Create a new script file in the FaceDetectPython root folder
+2. Import the FaceDetect package:
+
+    ```python
+   
+    from FaceDetect.facedetect import FaceDetect 
+   
+    ```
+3. Create a class that extends FaceDetect. That class extends FaceDetect and inherits all of its properties and methods. You can add additional methods and properties.
+    ```python
+    class MyDetector(FaceDetect):
+   
+       # example of a method that print the detections property from FaceDetect
+        def main(self):
+            print(self.detections)
+    
+    ```
+4. Instantiate an object of this created class
+    ```python
+    
+    # Set custom to True and pass the name of the method to its constructor
+    my_detector = MyDetector({'custom': True, 'method': 'main' })
+    
+    ```
+ 5. Start the detections 
+     
+    ```python
+    try:
+        facedetector.start()
+    
+    # FaceDetect always generates TypeError exceptions
+    except TypeError as error:
+        print(error)
+
+    ```
+ 
+ 6. This will start capturing from a video from the webcam and human faces will be highlighted in the video with a blue rectangle surrounding them. However, on top of it the console will be printing the coordinates of the faces that it finds on the webcam 
+ This code can be found in the the `main_detect_webcam_extended.py` script that is in the distribution
+
+
 <br />
 
 ## Let's have some fun

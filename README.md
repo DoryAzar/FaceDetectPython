@@ -29,6 +29,7 @@
     2. By extending the FaceDetect class to create more elaborate features
 + Face Detection has been implemented for all 3 media. The faces can now be detected in images, videos and live webcams
 + Detections are either drawn on the medium (default setting) or the face locations can be printed out in the console
++ All the features are documented in the README
 
 
 <br />

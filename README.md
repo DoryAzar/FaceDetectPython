@@ -141,8 +141,24 @@ What we do with the detections is really what this framework is all about.
 On one hand, it provides cool native features such as drawing rectangles around them, labeling them, recognizing the faces etc.
 On the other, it provides a way to extend its capabilities by writing custom features
 
+#### Getting Started with FaceDetect
 
+1. Start by creating a new python script file in the root of the distribution folder FaceDetectPython (similarly to main.py that is provided with the distribution)
+2. The first thing that you need to do is to import the FaceDetect package:
 
+        ```
+           from FaceDetect.facedetect import FaceDetect 
+           
+        ```
+
+3. Instantiate a FaceDetect object. A `settings` string in a JSON format can be passed to the constructor to use different features of FaceDetect. Initially, we will not pass any to run FaceDetect in its default settings.
+        
+        ```
+        facedetector = FaceDetect()
+        
+        ```
+     
+    
 <br />
 
 ## Let's have some fun
@@ -161,5 +177,6 @@ On the other, it provides a way to extend its capabilities by writing custom fea
 
 ## Known Issues
 
-+ OpenCV is generating 
++ OpenCV is generating a warning upon loading a video, webcam or an image indicating that some plugins are not compiled against the right Qt binaries. This is due to the GUI that needs to be compiled and that depends heavily on X11 libraries. This issue did not cause any issue for the needs of FaceDetect. It could be resolved by making sure all libraries are compatible with the latest MacOs.
 
++ OpenCV is not the best for drawing on top of rich media. It is however the most robust in terms of computer graphics and is a fast video and image processor. 

@@ -194,8 +194,8 @@ On the other, it provides a way to extend its capabilities by writing custom fea
         print(error)
     
     ```
- 5. This will start capturing from a video from the webcam and human faces will be highlighted in the video with a blue rectangle surrounding them.
- This code can be found in the the `main.py` script that is in the distribution
+ 5. This will start a live stream from a webcam and human faces will be highlighted in the live stream with a blue rectangle surrounding them.
+ This code can be found in the `main.py` script that is in the distribution
  
     We will explore more capabilities in the `Let's have some fun` section
 
@@ -204,7 +204,7 @@ On the other, it provides a way to extend its capabilities by writing custom fea
 #### Extending the capabilities of FaceDetect
 
 FaceDetect provides you with a way to extend its capabilities by implementing your own code on top of the package.
-In order to do that you will need extend the FaceDetect class.
+In order to do that you will need to extend the FaceDetect class.
 
 1. Create a new script file in the FaceDetectPython root folder
 2. Import the FaceDetect package:
@@ -242,8 +242,9 @@ In order to do that you will need extend the FaceDetect class.
 
     ```
  
- 6. This will start capturing from a video from the webcam and human faces will be highlighted in the video with a blue rectangle surrounding them. However, on top of it the console will be printing the coordinates of the faces that it finds on the webcam 
- This code can be found in the the `main_detect_webcam_extended.py` script that is in the distribution
+ 6. This will start a live stream from a webcam and human faces will be highlighted in the live stream with a blue rectangle surrounding them.
+ On top of this, the code in the `main` function will be executed iteratively with every detection cycle.
+ This code can be found in the `main_detect_webcam_extended.py` script that is in the distribution.
 
 
 <br />

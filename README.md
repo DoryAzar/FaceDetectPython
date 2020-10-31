@@ -9,6 +9,7 @@
 
 ## Content
 
++ [Project Status](https://github.com/DoryAzar/FaceDetectPython#project-status)
 + [Project Synopsis](https://github.com/DoryAzar/FaceDetectPython#project-synopsis)
 + [Resources](https://github.com/DoryAzar/FaceDetectPython#resources)
 + [Let's get started](https://github.com/DoryAzar/FaceDetectPython#lets-get-started)
@@ -16,6 +17,19 @@
 + [Let's have some fun](https://github.com/DoryAzar/FaceDetectPython#lets-have-some-fun)
 + [Final Thoughts](https://github.com/DoryAzar/FaceDetectPython#final-thoughts)
 + [Known Issues](https://github.com/DoryAzar/FaceDetectPython#known-issues)
+
+<br />
+
+## Project Status
+
++ The foundation for the framework has been completed. FaceDetect has been implemented and packaged as a class that just needs to be imported for usage.
++ The framework allows reading images, videos and webcam streams
++ The framework allows for customization in 2 ways: 
+    1. By providing a settings dictionary to the constructor to adjust the native features
+    2. By extending the FaceDetect class to create more elaborate features
++ Face Detection has been implemented for all 3 media. The faces can now be detected in images, videos and live webcams
++ Detections are either drawn on the medium (default setting) or the face locations can be printed out in the console
+
 
 <br />
 

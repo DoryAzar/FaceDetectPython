@@ -208,6 +208,8 @@ class FaceDetect:
     ####################################################
 
     def __execute_setting(self):
+        """ Assesses the provided (or default) settings and executes the detection features """
+        
         # If there are detections print and drawing is off, print them off
         if self.__get_setting('print'):
             print(self)

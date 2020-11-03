@@ -110,6 +110,11 @@ Open source computer vision library that provides machine AI vision
     //use pip to install opencv
     pip install opencv-python
 ```
+
+#### PIL: Python Imaging Library
+
+PIL is a native Python library. It is used for image manipulations.
+
 <br />
 
 ### Installation

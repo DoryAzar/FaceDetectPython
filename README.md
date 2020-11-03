@@ -262,8 +262,11 @@ Here is a list of all the settings and their potential values:
 
 ```python
 'mode': 'video'     # Specifies if the input for detections is video (default) or image. Webcam is mode video
+
 'draw': True        # Specifies whether or not the face detections should be drawn on the image or video. If set to False, nothing is displayed but detections are printed out in the console
+
 'custom': False     # If you wish to extend the FaceDetect class, set to True (check the next section for more information)
+
 'method': 'detect'  # detect (default) to run detections. 'recognize' to run face recognition
                     # If custom is set to True, the method setting will specify the callback method that you define in the extended class
 

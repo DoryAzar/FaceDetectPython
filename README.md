@@ -198,6 +198,28 @@ On the other, it provides a way to extend its capabilities by writing custom fea
  This code can be found in the `main.py` script that is in the distribution
  
     We will explore more capabilities in the `Let's have some fun` section
+    
+<br />
+
+#### Personalized Settings
+
+FaceDetect gives you the flexibility to control its features through the use of a `settings` dictionary that can be passed to the constructor.
+
+```python
+
+facedetector = FaceDetect({'setting1':'value1', 'settings2': 'value2' # etc...})
+
+```
+Here is a list of all the settings and their potential values:
+
+```python
+'mode': 'video'     # Specifies if the input for detections is video (default) or image. Webcam is mode video
+'draw': True        # Specifies whether or not the face detections should be drawn on the image or video. If set to False, nothing is displayed but detections are printed out in the console
+'custom': False     # If you wish to extend the FaceDetect class, set to True (check the next section for more information)
+'method': 'detect'  # detect (default) to run detections. 'recognize' to run face recognition
+                    # If custom is set to True, the method setting will specify the callback method that you define in the extended class
+
+```
 
 <br />
 

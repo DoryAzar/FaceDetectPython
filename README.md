@@ -49,11 +49,11 @@ The framework aims to provide an easy way for developers to  detect faces, facia
 
 Here are some of the features that we are considering. We will try to do as many as time allows:
 + Detect faces in an image, video or live webcam
++ Extract detected faces in separate images from the main image
 + Detect facial features (eyes, noses, ears etc.) 
-+ Line drawings of faces detected in images, videos or live webcams
 + Recognize previously saved faces in an image, video or live webcam 
-+ Create a face signature from a live webcam and recognize that face in the live stream
 + Generate live detections in a JSON format for extensibility
++ Line drawings of faces detected in images, videos or live webcams (stretch goal)
 
 <br />
 
@@ -261,14 +261,18 @@ facedetector = FaceDetect({'setting1':'value1', 'settings2': 'value2' # etc...})
 Here is a list of all the settings and their potential values:
 
 ```python
-'mode': 'video'     # Specifies if the input for detections is video (default) or image. Webcam is mode video
+'mode': 'video'             # Specifies if the input for detections is video (default) or image. Webcam is mode video
 
-'draw': True        # Specifies whether or not the face detections should be drawn on the image or video. If set to False, nothing is displayed but detections are printed out in the console
+'draw': True                # Specifies whether or not the face detections should be drawn on the image or video. If set to False, nothing is displayed but detections are printed out in the console
 
-'custom': False     # If you wish to extend the FaceDetect class, set to True (check the next section for more information)
+'custom': False             # If you wish to extend the FaceDetect class, set to True (check the next section for more information)
 
-'method': 'detect'  # detect (default) to run detections. 'recognize' to run face recognition
-                    # If custom is set to True, the method setting will specify the callback method that you define in the extended class
+'method': 'detect'          # detect (default) to run detections. 'recognize' to run face recognition
+                            # If custom is set to True, the method setting will specify the callback method that you define in the extended class
+
+'print': True               # Prints the face locations and labels on the console. Set to False to disable
+
+'face-extraction': False    # Extracts captures of the faces into their own images. Applicable only to mode image
 
 ```
 

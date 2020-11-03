@@ -17,12 +17,15 @@
 #   * custom: False (default). Set to True when the FaceDetect class is extended
 #   * method: call native callback methods during detection or bypass with a custom method
 #   * draw: draws the detection on the canvas if set to True (default)
+#   * print: prints the face locations and labels on the console
+#   * face-extraction: extracts captures of the faces into their own images. Applicable only to mode image
 #
 # Dory Azar
 # December 2020
 
 import os
 import cv2
+from PIL import Image
 import face_recognition
 
 
@@ -30,7 +33,14 @@ class FaceDetect:
     """ FaceDetect framework that provides tools and features to detect and recognize faces in different media """
 
     # Defining constant settings
-    DEFAULT_SETTINGS = {'mode': 'video', 'draw': True, 'custom': False, 'method': 'detect'}
+    DEFAULT_SETTINGS = {
+                            'mode': 'video',
+                            'draw': True,
+                            'custom': False,
+                            'method': 'detect',
+                            'face-extraction': False,
+                            'print': True
+                        }
     ACCEPTED_VIDEO_FORMAT = ['avi', 'mp4', 'mov']
     ACCEPTED_IMAGE_FORMAT = ['jpeg', 'jpg', 'gif', 'png']
 
@@ -48,6 +58,7 @@ class FaceDetect:
         self.face_encodings = []  # Face Signatures
         self.face_labels = []  # Face labels
         self.detections = None  # Face detection results
+        self.face_extracts = []   # Collection of face extracted face images
 
         # Populating setting from input (overrides are possible)
         if settings:
@@ -128,7 +139,6 @@ class FaceDetect:
 
                 ret, self.frame = self.stream.read()
                 if ret:
-
                     # Start the detection
                     self.__detect()
 
@@ -171,14 +181,10 @@ class FaceDetect:
         # Condense the face locations and labels into tuples
         self.detections = zip(self.face_locations, self.face_labels) if self.face_locations else None
 
-        # Draw detections if they are available and the setting is on
-        if self.detections and self.__get_setting('draw'):
+        # Execute detection settings
+        if self.detections:
             self.detections = [(detection[0], detection[1]) for detection in self.detections]
-            self.__draw_detections()
-
-        # If there are detections print and drawing is off, print them off
-        elif self.detections:
-            print(self)
+            self.__execute_setting()
 
     def __callback(self):
         """ Callback method that will run at every fetching interval and that will execute
@@ -198,8 +204,21 @@ class FaceDetect:
             raise TypeError("The provided method does not exist")
 
     ####################################################
-    # Additional callback methods
+    # FaceDetect Feature Methods
     ####################################################
+
+    def __execute_setting(self):
+        # If there are detections print and drawing is off, print them off
+        if self.__get_setting('print'):
+            print(self)
+
+        # Draw detections if they are available and the setting is on
+        if self.__get_setting('draw'):
+            self.__draw_detections()
+
+        # Extract face images
+        if self.__get_setting('mode') == 'image' and self.__get_setting('face-extraction'):
+            self.__extract_face_images()
 
     def __recognize(self):
         """ Calls the face recognition """
@@ -237,6 +256,24 @@ class FaceDetect:
             self.canvas.rectangle(self.frame, (left, bottom - 35), (right, bottom), (255, 0, 0), self.canvas.FILLED)
             font = self.canvas.FONT_HERSHEY_DUPLEX
             self.canvas.putText(self.frame, label, (left + 6, bottom - 6), font, 0.9, (255, 255, 255), 1)
+
+    def __extract_face_images(self):
+        """ Extracts individual face images from image. Works in mode image only """
+
+        # Iterate through the zipped tuples of locations and labels
+        for (top, right, bottom, left), label in self.detections:
+
+            # frame the detected face
+            face_image = self.stream[top:bottom, left:right]
+
+            # Change the image to PIL image for manipulation
+            pil_image = Image.fromarray(face_image)
+
+            # Save the extracted PIL images
+            self.face_extracts.append(pil_image)
+
+            # Display the pil image
+            pil_image.show()
 
     ####################################################
     # Utility methods

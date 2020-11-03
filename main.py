@@ -12,6 +12,8 @@ from FaceDetect.facedetect import FaceDetect
 #   * custom: False (default). Set to True when the FaceDetect class is extended
 #   * method: call native callback methods during detection or bypass with a custom method
 #   * draw: draws the detection on the canvas if set to True (default)
+#   * print: prints the face locations and labels on the console
+#   * face-extraction: extracts captures of the faces into their own images. Applicable only to mode image
 #
 
 

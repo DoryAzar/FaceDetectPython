@@ -14,6 +14,7 @@ from FaceDetect.facedetect import FaceDetect
 #   * draw: draws the detection on the canvas if set to True (default)
 #   * print: prints the face locations and labels on the console
 #   * face-extraction: extracts captures of the faces into their own images. Applicable only to mode image
+#   * face-features: Draws the specified face features. Off by default. Pass the list ['face'] to draw the whole face
 #
 
 

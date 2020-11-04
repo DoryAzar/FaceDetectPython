@@ -279,6 +279,8 @@ Here is a list of all the settings and their potential values:
 
 'face-extraction': False    # Extracts captures of the faces into their own images. Applicable only to mode image
 
+'face-features': []         # Default no face features will be drawn. Specify what face features to draw in a list/array
+                            # Possible values: 'face' (for the whole face), 'chin', 'left_eye', 'right_eye', 'left_eyebrow', 'right_eyebrow', 'nose_bridge', 'nose_tip', 'top_lip', 'bottom_lip'
 ```
 
 

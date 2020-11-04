@@ -26,6 +26,7 @@
 import os
 import cv2
 from PIL import Image
+import numpy
 import face_recognition
 
 
@@ -33,14 +34,17 @@ class FaceDetect:
     """ FaceDetect framework that provides tools and features to detect and recognize faces in different media """
 
     # Defining constant settings
+    FACE_FEATURES = ['chin', 'left_eye', 'right_eye', 'left_eyebrow', 'right_eyebrow', 'nose_bridge', 'nose_tip',
+                     'top_lip', 'bottom_lip']
     DEFAULT_SETTINGS = {
-                            'mode': 'video',
-                            'draw': True,
-                            'custom': False,
-                            'method': 'detect',
-                            'face-extraction': False,
-                            'print': True
-                        }
+        'mode': 'video',
+        'draw': True,
+        'custom': False,
+        'method': 'detect',
+        'face-extraction': False,
+        'print': True,
+        'face-features': []
+    }
     ACCEPTED_VIDEO_FORMAT = ['avi', 'mp4', 'mov']
     ACCEPTED_IMAGE_FORMAT = ['jpeg', 'jpg', 'gif', 'png']
 
@@ -58,7 +62,8 @@ class FaceDetect:
         self.face_encodings = []  # Face Signatures
         self.face_labels = []  # Face labels
         self.detections = None  # Face detection results
-        self.face_extracts = []   # Collection of face extracted face images
+        self.face_landmarks = None  # Face landmarks
+        self.face_extracts = []  # Collection of face extracted face images
 
         # Populating setting from input (overrides are possible)
         if settings:
@@ -173,6 +178,9 @@ class FaceDetect:
         # Find all the faces in the frame
         self.face_locations = face_recognition.face_locations(rgb_small_frame)
 
+        # Find all the faces landmarks
+        self.face_landmarks = face_recognition.face_landmarks(rgb_small_frame)
+
         # Iterate through the detected face locations and append an unknown label
         for count, location in enumerate(self.face_locations):
             label = "Face " + str(count + 1)
@@ -222,6 +230,20 @@ class FaceDetect:
         if self.__get_setting('mode') == 'image' and self.__get_setting('face-extraction'):
             self.__extract_face_images()
 
+        # Draw Face Landmarks
+
+        # Get the face-features setting
+        features = self.__get_setting('face-features')
+
+        # Force to an empty list if
+        features = [] if type(features) is not list else list(map(str.lower, features))
+
+        # Default features to be drawn unless specified
+        features = self.FACE_FEATURES if 'face' in features else features
+
+        if self.face_landmarks and features:
+            self.__draw_landmarks(features)
+
     def __recognize(self):
         """ Calls the face recognition """
         print('recognizing')
@@ -264,7 +286,6 @@ class FaceDetect:
 
         # Iterate through the zipped tuples of locations and labels
         for (top, right, bottom, left), label in self.detections:
-
             # frame the detected face
             face_image = self.stream[top:bottom, left:right]
 
@@ -276,6 +297,25 @@ class FaceDetect:
 
             # Display the pil image
             pil_image.show()
+
+    def __draw_landmarks(self, features=None):
+        """ Draws the facial features of a detected face """
+
+        # Iterate through the detected face landmarks
+        for landmark in self.face_landmarks:
+
+            # Iterate through the features of each face
+            for feature in landmark:
+
+                # Draw them as closed lines on the canvas except the chin will be an open line
+                if features and feature in features:
+                    # Sampling of the landmarks has been done on a smaller capture for performance
+                    # Resize the points respectively
+                    points = [(x * 4, y * 4) for (x, y) in landmark[feature]]
+
+                    # Draw closed lines around the feature unless it's the chin
+                    points = numpy.array(points)
+                    self.canvas.polylines(self.frame, [points], feature != 'chin', (255, 0, 0), 2)
 
     ####################################################
     # Utility methods

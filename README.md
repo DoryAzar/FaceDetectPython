@@ -28,7 +28,9 @@
     1. By providing a settings dictionary to the constructor to adjust the native features
     2. By extending the FaceDetect class to create more elaborate features
 + Face Detection has been implemented for all 3 media. The faces can now be detected in images, videos and live webcams
-+ Detections are either drawn on the medium (default setting) or the face locations can be printed out in the console
++ Ability to either draw the detections or print them to the console has been implemented
++ Ability to extract detected faces into separate individual images has been implemented
++ Ability to detect facial features and draw them on top of either medium has been implemented
 + All the features are documented in the README
 
 
@@ -50,7 +52,7 @@ The framework aims to provide an easy way for developers to  detect faces, facia
 Here are some of the features that we are considering. We will try to do as many as time allows:
 + Detect faces in an image, video or live webcam
 + Extract detected faces in separate images from the main image
-+ Detect facial features (eyes, noses, ears etc.) 
++ Detect and draw facial features (eyes, noses, ears etc.) 
 + Recognize previously saved faces in an image, video or live webcam 
 + Generate live detections in a JSON format for extensibility
 + Line drawings of faces detected in images, videos or live webcams (stretch goal)

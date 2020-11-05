@@ -15,6 +15,9 @@ from FaceDetect.facedetect import FaceDetect
 #   * print: prints the face locations and labels on the console
 #   * face-extraction: extracts captures of the faces into their own images. Applicable only to mode image
 #   * face-features: Draws the specified face features. Off by default. Pass the list ['face'] to draw the whole face
+#   * known-faces: Setting need for facial recognition when 'method' is set to 'recognize'
+#                  It is a dictionary of face labels and image paths associated.
+#                  For example: {'John': 'person1.png', 'Jane': 'person2.png'}
 #
 
 

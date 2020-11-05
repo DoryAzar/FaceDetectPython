@@ -45,7 +45,7 @@ class FaceDetect:
         'face-extraction': False,
         'print': True,
         'face-features': [],
-        'known-faces': {'D1': 'resources/person1.png', 'D2': 'resources/person2.png'}
+        'known-faces': {'John': 'resources/person1.png', 'Jane': 'resources/person2.png'}
     }
     ACCEPTED_VIDEO_FORMAT = ['avi', 'mp4', 'mov']
     ACCEPTED_IMAGE_FORMAT = ['jpeg', 'jpg', 'gif', 'png']
@@ -79,7 +79,7 @@ class FaceDetect:
                 val = val.lower().strip() if type(val) is str else val
 
                 # Set the settings to the sanitized keys and values
-                self.settings[sanitized_setting] = val
+                self.settings[sanitized_setting] = val if val else self.settings[sanitized_setting]
 
     ####################################################
     # Public methods for face detection and recognition

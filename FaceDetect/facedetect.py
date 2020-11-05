@@ -19,6 +19,7 @@
 #   * draw: draws the detection on the canvas if set to True (default)
 #   * print: prints the face locations and labels on the console
 #   * face-extraction: extracts captures of the faces into their own images. Applicable only to mode image
+#   * face-features: Draws the specified face features. Off by default. Pass the list ['face'] to draw the whole face
 #
 # Dory Azar
 # December 2020
@@ -134,12 +135,12 @@ class FaceDetect:
         # Start the detection
         self.__detect()
 
+        # Call a native or custom callback method
+        self.__callback()
+
         # Execute Settings if there are detections
         if self.detections:
             self.__execute_setting()
-
-        # Call a native or custom callback method
-        self.__callback()
 
         # Open the cv2 media player
         while True:
@@ -248,13 +249,7 @@ class FaceDetect:
             self.face_labels.append(label)
 
         # Upon face detection
-
-        # Condense the face locations and labels into tuples
-        self.detections = zip(self.face_locations, self.face_labels) if self.face_locations else None
-
-        # Format onto tuples if there are self detections
-        if self.detections:
-            self.detections = [(detection[0], detection[1]) for detection in self.detections]
+        self.__generate_detections()
 
     def __callback(self):
         """ Callback method that will run at every fetching interval and that will execute
@@ -303,10 +298,35 @@ class FaceDetect:
             self.__draw_landmarks(features)
 
     def __recognize(self):
-        """ Calls the face recognition """
+        """ Compares faces to a known set of images and identifies them in the canvas """
 
-        print('recognize')
-        return self
+        if self.face_encodings:
+
+            # Clear the face labels to prepare for recognition
+            self.face_labels = []
+
+            # Iterate through the different face_encodings identified
+            for face_encoding in self.face_encodings:
+
+                # Default label is unknown
+                label = 'Unknown'
+
+                # Compare the face encodings and get all the potential matches
+                face_matches = face_recognition.compare_faces(self.known_faces_encodings, face_encoding)
+
+                # Find the best match based on the face distances
+                face_distances = face_recognition.face_distance(self.known_faces_encodings, face_encoding)
+                best_match = int(numpy.argmin(face_distances))
+
+                # When a best match use the label provided as the label
+                if face_matches[best_match]:
+                    label = self.known_faces_labels[best_match]
+
+                # Append the face label to the collection
+                self.face_labels.append(label)
+
+            # Update the detections account for the  new names
+            self.__generate_detections()
 
     ####################################################
     # OpenCV & PIL  Utility methods
@@ -322,14 +342,22 @@ class FaceDetect:
     def __draw_detections(self):
         """ Draws the rectangles over the detections """
 
+        # Check if there is recognition
+        is_recognize = self.__get_setting('method') == 'recognize'
+
         # Iterate through the zipped tuples of locations and labels
         for (top, right, bottom, left), label in self.detections:
 
+            # Define the colors based on whether or not recognition is activated
+            b = 255 if not is_recognize else 0
+            g = 255 if is_recognize and label != 'Unknown' else 0
+            r = 255 if is_recognize and label == 'Unknown' else 0
+
             # Draw a box around the face
-            self.canvas.rectangle(self.frame, (left, top), (right, bottom), (255, 0, 0), 2)
+            self.canvas.rectangle(self.frame, (left, top), (right, bottom), (b, g, r), 2)
 
             # Draw a label with a label below the face
-            self.canvas.rectangle(self.frame, (left, bottom - 35), (right, bottom), (255, 0, 0), self.canvas.FILLED)
+            self.canvas.rectangle(self.frame, (left, bottom - 35), (right, bottom), (b, g, r), self.canvas.FILLED)
             font = self.canvas.FONT_HERSHEY_DUPLEX
             self.canvas.putText(self.frame, label, (left + 6, bottom - 6), font, 0.9, (255, 255, 255), 1)
 
@@ -400,6 +428,16 @@ class FaceDetect:
         if key.lower() in self.settings and self.settings[key]:
             return self.settings[key]
         return None
+
+    def __generate_detections(self):
+        """ Generates and updates the detections """
+
+        # Condense the face locations and labels into tuples
+        self.detections = zip(self.face_locations, self.face_labels) if self.face_locations else None
+
+        # Format onto tuples if there are self detections
+        if self.detections:
+            self.detections = [(detection[0], detection[1]) for detection in self.detections]
 
     def __end(self):
         """ Ends the show """

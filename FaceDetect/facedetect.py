@@ -44,7 +44,7 @@ class FaceDetect:
         'face-extraction': False,
         'print': True,
         'face-features': [],
-        'known-faces': {'D1': 'path1', 'D2': 'path2'}
+        'known-faces': {'D1': 'resources/person1.png', 'D2': 'resources/person2.png'}
     }
     ACCEPTED_VIDEO_FORMAT = ['avi', 'mp4', 'mov']
     ACCEPTED_IMAGE_FORMAT = ['jpeg', 'jpg', 'gif', 'png']
@@ -69,12 +69,16 @@ class FaceDetect:
         # Populating setting from input (overrides are possible)
         if settings:
             for setting in settings:
-                setting = setting.lower()
 
-                # Sanitize if string, otherwise take as is
-                val = settings[setting].lower().strip() if isinstance(settings[setting], str) else settings[setting]
+                # Sanitize the key
+                sanitized_setting = setting.lower()
 
-                self.settings[setting] = val
+                # Get the value and sanitize if string, otherwise take as is
+                val = settings.get(setting)
+                val = val.lower().strip() if type(val) is str else val
+
+                # Set the settings to the sanitized keys and values
+                self.settings[sanitized_setting] = val
 
     ####################################################
     # Public methods for face detection and recognition
@@ -244,12 +248,12 @@ class FaceDetect:
             self.face_labels.append(label)
 
         # Upon face detection
-        if self.face_locations:
 
-            # Condense the face locations and labels into tuples
-            self.detections = zip(self.face_locations, self.face_labels)
+        # Condense the face locations and labels into tuples
+        self.detections = zip(self.face_locations, self.face_labels) if self.face_locations else None
 
-            # Format onto tuples if there are self detections
+        # Format onto tuples if there are self detections
+        if self.detections:
             self.detections = [(detection[0], detection[1]) for detection in self.detections]
 
     def __callback(self):
@@ -300,7 +304,8 @@ class FaceDetect:
 
     def __recognize(self):
         """ Calls the face recognition """
-        print('recognizing')
+
+        print('recognize')
         return self
 
     ####################################################

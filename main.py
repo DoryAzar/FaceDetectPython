@@ -18,7 +18,7 @@ from FaceDetect.facedetect import FaceDetect
 #
 
 
-facedetector = FaceDetect()
+facedetector = FaceDetect({'method': 'recognize'})
 
 try:
     # When the start method is not given an image or video path, it starts the webcam

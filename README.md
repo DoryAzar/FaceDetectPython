@@ -55,7 +55,6 @@ Here are some of the features that we are considering. We will try to do as many
 + Detect and draw facial features (eyes, noses, ears etc.) 
 + Recognize previously saved faces in an image, video or live webcam 
 + Generate live detections in a JSON format for extensibility
-+ Line drawings of faces detected in images, videos or live webcams (stretch goal)
 
 <br />
 

@@ -115,7 +115,13 @@ Open source computer vision library that provides machine AI vision
 
 #### PIL: Python Imaging Library
 
-PIL is a native Python library. It is used for image manipulations.
+PIL is a native Python library. It is used in this project for image manipulations.
+
+<br />
+
+#### Numpy
+
+Numpy is a native Python library. It is used for multi-dimensional array manipulations. It is used in this project for image array manipulations and matrices conversions
 
 <br />
 

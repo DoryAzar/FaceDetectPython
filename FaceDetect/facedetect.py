@@ -131,6 +131,9 @@ class FaceDetect:
         except self.canvas.error:
             raise TypeError("We are unable to start FaceDetect")
 
+        except Exception:
+            raise TypeError("We are unable to process the data correctly")
+
     def __detect_stream(self, media_path=''):
         """ Starts the video or the webcam for face detection and recognition"""
 
@@ -162,6 +165,9 @@ class FaceDetect:
         except self.canvas.error:
             raise TypeError("We are unable to start FaceDetect")
 
+        except Exception:
+            raise TypeError("We are unable to process the data correctly")
+
     def __detect(self):
         """ Detects faces in the media provided and calls on drawing or printing locations out """
 
@@ -169,10 +175,11 @@ class FaceDetect:
         mode = self.__get_setting('mode')
         self.face_labels = []
 
-        # Resize frame of video to 1/4 size for faster face recognition processing
+        # Resize frame of video to 1/4 size for faster face detections
         small_frame = self.canvas.resize(self.frame, (0, 0), fx=0.25, fy=0.25)
 
-        # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
+        # If it's video, convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
+        # If it is an image take the stream
         rgb_small_frame = small_frame[:, :, ::-1] if mode != 'image' else self.stream
 
         # Find all the faces in the frame
@@ -180,6 +187,18 @@ class FaceDetect:
 
         # Find all the faces landmarks
         self.face_landmarks = face_recognition.face_landmarks(rgb_small_frame)
+
+        # Resize the data to match original size
+        if mode != 'image':
+
+            # Resize data to bring to original size
+            self.face_locations = [(top*4, bottom*4, left*4, right*4) for (top, bottom, left, right)
+                                   in self.face_locations]
+
+            # Resize the data to bring to original size
+            for landmark in self.face_landmarks:
+                for feature in landmark:
+                    landmark[feature] = [(x * 4, y * 4) for (x, y) in landmark[feature]]
 
         # Iterate through the detected face locations and append an unknown label
         for count, location in enumerate(self.face_locations):
@@ -266,13 +285,6 @@ class FaceDetect:
         # Iterate through the zipped tuples of locations and labels
         for (top, right, bottom, left), label in self.detections:
 
-            if self.__get_setting('mode') != 'image':
-                # Resize the face locations since the initial detected frame was scaled down
-                top *= 4
-                right *= 4
-                bottom *= 4
-                left *= 4
-
             # Draw a box around the face
             self.canvas.rectangle(self.frame, (left, top), (right, bottom), (255, 0, 0), 2)
 
@@ -309,12 +321,9 @@ class FaceDetect:
 
                 # Draw them as closed lines on the canvas except the chin will be an open line
                 if features and feature in features:
-                    # Sampling of the landmarks has been done on a smaller capture for performance
-                    # Resize the points respectively
-                    points = [(x * 4, y * 4) for (x, y) in landmark[feature]]
 
                     # Draw closed lines around the feature unless it's the chin
-                    points = numpy.array(points)
+                    points = numpy.array(landmark[feature])
                     self.canvas.polylines(self.frame, [points], feature != 'chin', (255, 0, 0), 2)
 
     ####################################################

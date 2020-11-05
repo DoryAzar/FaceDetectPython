@@ -28,6 +28,6 @@ try:
     facedetector.start('resources/people.jpg')
 
 
-# FaceDetect always generates TypeError exceptions
-except TypeError as error:
+# FaceDetect always generates a FaceDetect Exception
+except Exception as error:
     print(error)

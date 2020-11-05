@@ -201,8 +201,8 @@ On the other, it provides a way to extend its capabilities by writing custom fea
         facedetector.start()
     
     
-    # FaceDetect always generates TypeError exceptions
-    except TypeError as error:
+    # FaceDetect always generates a FaceDetect Exception
+    except Exception as error:
         print(error)
     
     ```
@@ -282,8 +282,8 @@ In order to do that you will need to extend the FaceDetect class.
     try:
         facedetector.start()
     
-    # FaceDetect always generates TypeError exceptions
-    except TypeError as error:
+    # FaceDetect always generates a FaceDetect Exception
+    except Exception as error:
         print(error)
 
     ```

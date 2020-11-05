@@ -43,7 +43,8 @@ class FaceDetect:
         'method': 'detect',
         'face-extraction': False,
         'print': True,
-        'face-features': []
+        'face-features': [],
+        'known-faces': {'D1': 'path1', 'D2': 'path2'}
     }
     ACCEPTED_VIDEO_FORMAT = ['avi', 'mp4', 'mov']
     ACCEPTED_IMAGE_FORMAT = ['jpeg', 'jpg', 'gif', 'png']
@@ -60,6 +61,7 @@ class FaceDetect:
         self.frame = None  # The detection frame
         self.face_locations = []  # Face locations
         self.face_encodings = []  # Face Signatures
+        self.known_faces_encodings = []  # Face Encodings of known faces
         self.face_labels = []  # Face labels
         self.detections = None  # Face detection results
         self.face_landmarks = None  # Face landmarks
@@ -82,13 +84,30 @@ class FaceDetect:
     def start(self, media_path=''):
         """ Interface starter that starts either an image app or a video/webcam app"""
 
-        # If mode is image than run static detection mode
-        if self.__get_setting('mode') == 'image':
-            self.__detect_static(media_path)
+        try:
 
-        # if mode is video than run streaming mode
-        else:
-            self.__detect_stream(media_path)
+            # Execute before calling engine
+            self.__preload()
+
+            # If mode is image than run static detection mode
+            if self.__get_setting('mode') == 'image':
+                self.__detect_static(media_path)
+
+            # if mode is video than run streaming mode
+            else:
+                self.__detect_stream(media_path)
+
+        # Raise TypeError exceptions
+        except TypeError as error:
+            raise Exception(error)
+
+        # Raise exceptions caused by canvas (cv2) and raise as FaceDetect Exception
+        except self.canvas.error:
+            raise Exception("There was a problem starting the FaceDetect canvas")
+
+        # Any other exception classify as data runtime issue and raise as FaceDetect Exception
+        except Exception as error:
+            raise Exception(error)
 
     ####################################################
     # Detection mechanisms
@@ -98,75 +117,63 @@ class FaceDetect:
 
     def __detect_static(self, media_path):
         """ Loads an image for face detection and recognition"""
-        try:
-            # Check if valid image type
-            if not media_path or not self.__is_valid_media('image', media_path):
-                raise TypeError('Provide a valid image file')
 
-            # Load the image in cv2 for display
-            self.frame = self.canvas.imread(media_path)
+        # Check if valid image type
+        if not media_path or not self.__is_valid_media('image', media_path):
+            raise Exception('Provide a valid image file')
 
-            # Load the image in face_recognition for calculations
-            self.stream = face_recognition.load_image_file(media_path)
+        # Load the image in cv2 for display
+        self.frame = self.canvas.imread(media_path)
 
-            # Start the detection
-            self.__detect()
+        # Load the image in face_recognition for calculations
+        self.stream = face_recognition.load_image_file(media_path)
 
-            # Call a native or custom callback method
-            self.__callback()
+        # Start the detection
+        self.__detect()
 
-            # Open the cv2 media player
-            while True:
+        # Execute Settings if there are detections
+        if self.detections:
+            self.__execute_setting()
 
-                # Display the final result
-                self.canvas.imshow('FaceDetect', self.frame)
+        # Call a native or custom callback method
+        self.__callback()
 
-                # Close when 'q' is pressed
-                if self.canvas.waitKey(1) & 0xFF == ord('q'):
-                    return
+        # Open the cv2 media player
+        while True:
 
-        except TypeError as error:
-            raise error
+            # Display the final result
+            self.canvas.imshow('FaceDetect', self.frame)
 
-        except self.canvas.error:
-            raise TypeError("We are unable to start FaceDetect")
-
-        except Exception:
-            raise TypeError("We are unable to process the data correctly")
+            # Close when 'q' is pressed
+            if self.canvas.waitKey(1) & 0xFF == ord('q'):
+                return
 
     def __detect_stream(self, media_path=''):
         """ Starts the video or the webcam for face detection and recognition"""
 
-        # Capture the media provided
-        try:
-            # Get the media stream
-            self.__capture(media_path)
+        # Get the media stream
+        self.__capture(media_path)
 
-            # Keep displaying as long as stream is open
-            while self.stream and self.stream.isOpened():
+        # Keep displaying as long as stream is open
+        while self.stream and self.stream.isOpened():
 
-                ret, self.frame = self.stream.read()
-                if ret:
-                    # Start the detection
-                    self.__detect()
+            ret, self.frame = self.stream.read()
+            if ret:
+                # Start the detection
+                self.__detect()
 
-                    # Call a native or custom callback method
-                    self.__callback()
+                # Call a native or custom callback method
+                self.__callback()
 
-                    self.canvas.imshow('FaceDetect', self.frame)
+                # Execute Settings if there are detections
+                if self.detections:
+                    self.__execute_setting()
 
-                # Close when 'q' is pressed
-                if self.canvas.waitKey(1) & 0xFF == ord('q'):
-                    return
+                self.canvas.imshow('FaceDetect', self.frame)
 
-        except TypeError as error:
-            raise error
-
-        except self.canvas.error:
-            raise TypeError("We are unable to start FaceDetect")
-
-        except Exception:
-            raise TypeError("We are unable to process the data correctly")
+            # Close when 'q' is pressed
+            if self.canvas.waitKey(1) & 0xFF == ord('q'):
+                return
 
     def __detect(self):
         """ Detects faces in the media provided and calls on drawing or printing locations out """
@@ -182,12 +189,12 @@ class FaceDetect:
         # If it is an image take the stream
         rgb_small_frame = small_frame[:, :, ::-1] if mode != 'image' else self.stream
 
-        # Find all the faces in the frame
+        # Find all the faces in the frame and their encodings
         self.face_locations = face_recognition.face_locations(rgb_small_frame)
+        self.face_encodings = face_recognition.face_encodings(rgb_small_frame, self.face_locations)
 
         # Find all the faces landmarks
         self.face_landmarks = face_recognition.face_landmarks(rgb_small_frame)
-
         # Resize the data to match original size
         if mode != 'image':
 
@@ -207,11 +214,7 @@ class FaceDetect:
 
         # Condense the face locations and labels into tuples
         self.detections = zip(self.face_locations, self.face_labels) if self.face_locations else None
-
-        # Execute detection settings
-        if self.detections:
-            self.detections = [(detection[0], detection[1]) for detection in self.detections]
-            self.__execute_setting()
+        self.detections = [(detection[0], detection[1]) for detection in self.detections if self.detections]
 
     def __callback(self):
         """ Callback method that will run at every fetching interval and that will execute
@@ -228,11 +231,38 @@ class FaceDetect:
 
         # Generate exception if the method does not exist
         except AttributeError:
-            raise TypeError("The provided method does not exist")
+            raise Exception("The provided method does not exist")
 
     ####################################################
     # FaceDetect Feature Methods
     ####################################################
+
+    def __preload(self):
+        """ Assesses the provided (or default) settings and preloads features """
+
+        # With recognition activated
+        if self.__get_setting('method') == 'recognize':
+
+            #  Get the known face files provided
+            known_faces = self.__get_setting('known-faces')
+            known_faces = known_faces if type(known_faces) is dict else {}
+
+            # Get the list of tuples from the setting input
+            known_faces = [(known_face_name, image_path) for known_face_name, image_path in known_faces.items()]
+
+            # Iterate through each setting input and load the images
+            for (known_face_name, image_path) in known_faces:
+                try:
+                    self.known_faces_encodings.append(face_recognition.face_encodings(face_recognition.load_image_file(image_path)))
+
+                # Raise FileNotFoundError onto a FaceDetect Exception
+                except FileNotFoundError:
+                    raise Exception("Some of the image paths provided are invalid")
+
+                # Raise any other Exception on a FaceDetect Exception
+                except Exception:
+                    raise Exception("We were not able to start face recognition")
+            exit()
 
     def __execute_setting(self):
         """ Assesses the provided (or default) settings and executes the detection features """

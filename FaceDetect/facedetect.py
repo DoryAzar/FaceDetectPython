@@ -59,9 +59,8 @@ class FaceDetect:
 
         # Initialize face detection and recognition properties
         self.frame = None  # The detection frame
-        self.face_locations = []  # Face locations
-        self.face_encodings = []  # Face Signatures
         self.known_faces_encodings = []  # Face Encodings of known faces
+        self.known_faces_labels = []  # Face Labels of known faces
         self.face_labels = []  # Face labels
         self.detections = None  # Face detection results
         self.face_landmarks = None  # Face landmarks
@@ -175,6 +174,38 @@ class FaceDetect:
             if self.canvas.waitKey(1) & 0xFF == ord('q'):
                 return
 
+    ####################################################
+    # FaceDetect Flow Methods
+    ####################################################
+
+    def __preload(self):
+        """ Assesses the provided (or default) settings and preloads features """
+
+        # With recognition activated
+        if self.__get_setting('method') == 'recognize':
+
+            #  Get the known face files provided
+            known_faces = self.__get_setting('known-faces')
+            known_faces = known_faces if type(known_faces) is dict else {}
+
+            # Get the list of tuples from the setting input
+            known_faces = [(known_face_label, image_path) for known_face_label, image_path in known_faces.items()]
+
+            # Iterate through each setting input and load the images
+            for (known_face_label, image_path) in known_faces:
+                try:
+                    loaded_image = face_recognition.load_image_file(image_path)
+                    self.known_faces_encodings.append(face_recognition.face_encodings(loaded_image)[0])
+                    self.known_faces_labels.append(known_face_label)
+
+                # Raise FileNotFoundError onto a FaceDetect Exception
+                except FileNotFoundError:
+                    raise Exception("Some of the image paths provided are invalid")
+
+                # Raise any other Exception on a FaceDetect Exception
+                except Exception:
+                    raise Exception("We were not able to start face recognition")
+
     def __detect(self):
         """ Detects faces in the media provided and calls on drawing or printing locations out """
 
@@ -212,9 +243,14 @@ class FaceDetect:
             label = "Face " + str(count + 1)
             self.face_labels.append(label)
 
-        # Condense the face locations and labels into tuples
-        self.detections = zip(self.face_locations, self.face_labels) if self.face_locations else None
-        self.detections = [(detection[0], detection[1]) for detection in self.detections if self.detections]
+        # Upon face detection
+        if self.face_locations:
+
+            # Condense the face locations and labels into tuples
+            self.detections = zip(self.face_locations, self.face_labels)
+
+            # Format onto tuples if there are self detections
+            self.detections = [(detection[0], detection[1]) for detection in self.detections]
 
     def __callback(self):
         """ Callback method that will run at every fetching interval and that will execute
@@ -232,37 +268,6 @@ class FaceDetect:
         # Generate exception if the method does not exist
         except AttributeError:
             raise Exception("The provided method does not exist")
-
-    ####################################################
-    # FaceDetect Feature Methods
-    ####################################################
-
-    def __preload(self):
-        """ Assesses the provided (or default) settings and preloads features """
-
-        # With recognition activated
-        if self.__get_setting('method') == 'recognize':
-
-            #  Get the known face files provided
-            known_faces = self.__get_setting('known-faces')
-            known_faces = known_faces if type(known_faces) is dict else {}
-
-            # Get the list of tuples from the setting input
-            known_faces = [(known_face_name, image_path) for known_face_name, image_path in known_faces.items()]
-
-            # Iterate through each setting input and load the images
-            for (known_face_name, image_path) in known_faces:
-                try:
-                    self.known_faces_encodings.append(face_recognition.face_encodings(face_recognition.load_image_file(image_path)))
-
-                # Raise FileNotFoundError onto a FaceDetect Exception
-                except FileNotFoundError:
-                    raise Exception("Some of the image paths provided are invalid")
-
-                # Raise any other Exception on a FaceDetect Exception
-                except Exception:
-                    raise Exception("We were not able to start face recognition")
-            exit()
 
     def __execute_setting(self):
         """ Assesses the provided (or default) settings and executes the detection features """

@@ -79,7 +79,7 @@ class FaceDetect:
                 val = val.lower().strip() if type(val) is str else val
 
                 # Set the settings to the sanitized keys and values
-                self.settings[sanitized_setting] = val if val else self.settings[sanitized_setting]
+                self.settings[sanitized_setting] = val if type(val) is bool or val else self.settings[sanitized_setting]
 
     ####################################################
     # Public methods for face detection and recognition

@@ -425,11 +425,27 @@ facedetect = FaceDetect({'draw': False, 'print': False})
 
 <br />
 
-4. Draw facial features on top of detected faces
+### 4. Draw facial features on top of detected faces
 
 FaceDetect allows you to draw facial features on top of detected faces in an image, video or webcam in simple lines of code.
 
+![](https://github.com/DoryAzar/FaceDetectPython/blob/master/outputs/main_facefeatures_image_output.png)
 
+```python
+
+facedetector = FaceDetect({'mode': 'image', 'face-features': ['face']}) # switch image to video for video or webcam
+# you can also choose to draw particular features such as:
+# 'chin', 'left_eye', 'right_eye', 'left_eyebrow', 'right_eyebrow', 'nose_bridge', 'nose_tip', 'top_lip', 'bottom_lip'
+
+try:
+    facedetector.start('resources/people.jpg') # leave empty for webcam or provide a video file
+
+except Exception as error:
+    print(error)
+
+```
+
+> The complete code can be found in [main_facefeatures_image.py](https://github.com/DoryAzar/FaceDetectPython/blob/master/main_facefeatures_image.py)
 
 <br />
 

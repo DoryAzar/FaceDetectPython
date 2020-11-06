@@ -45,7 +45,7 @@ class FaceDetect:
         'face-extraction': False,
         'print': True,
         'face-features': [],
-        'known-faces': {'John': 'resources/person1.png', 'Jane': 'resources/person2.png'}
+        'known-faces': {}
     }
     ACCEPTED_VIDEO_FORMAT = ['avi', 'mp4', 'mov']
     ACCEPTED_IMAGE_FORMAT = ['jpeg', 'jpg', 'gif', 'png']

@@ -131,6 +131,26 @@ You can install the FaceDetect application from github
 git clone https://github.com/DoryAzar/FaceDetectPython
 ```
 
+
+### FaceDetect Structure
+
+The distribution comes with several scripts that are explained herewith:
+
++ **FaceDetect > facedetect.py**: `facedetect.py` is the core logic that we created that makes all the magic happen. 
+The FaceDetect class and all its features and functionalities are implemented in this script. The script is open source
+and can be modified and adjusted as needed within the boundaries of an MIT license.
+
++ **main scripts**: In the root folder of the distribution, there are several scripts that start with `main...`.
+This series of scripts are examples of how FaceDetect is used in different situations.
+
++ **resources**: The `resources` folder contains example images to test out face detection and recognition. 
+They are used by the main scripts.
+
++ **outputs**: The `outputs` folder contains screenshots of the example programs in action used for documentation purposes
+
+<br />
+
+
 ### Testing the installation
 
 The `main.py` script provided with the distribution provides an initial boiler plate main to test out the installation.
@@ -149,6 +169,8 @@ It can be run either in the terminal or using Anaconda PyCharm
 
 
 <br />
+
+
 
 
 ## Let's get through the basics

@@ -505,7 +505,7 @@ FaceDetect allows you to recognize faces in a video or a webcam based on a dicti
 If it finds matches, it  will identify them on the video or webcam canvas with a green rectangle along with the respective names (provided). 
 The unknown faces will be identified with a red rectangle labelled 'Unknown'.
 
-![]()
+![](https://github.com/DoryAzar/FaceDetectPython/blob/master/outputs/main_recognize_video_output.png)
 
 ```python
 
@@ -522,7 +522,7 @@ except Exception as error:
 
 ```
 
-> The complete code can be found in [main_recognize_video.py]()
+> The complete code can be found in [main_recognize_video.py](https://github.com/DoryAzar/FaceDetectPython/blob/master/main_recognize_video.py)
 
 <br  />
 

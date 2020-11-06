@@ -449,6 +449,30 @@ except Exception as error:
 
 <br />
 
+### 5. Extract faces into images (image mode only)
+
+FaceDetect provides you with a way to extract the faces from an image and load them as individual images that can be saved locally.
+
+![]()
+
+```python
+
+# Set face extraction to true
+facedetector = FaceDetect({'mode': 'image', 'face-extraction': True})
+
+try:
+    facedetector.start('resources/people.jpg')
+
+except Exception as error:
+    print(error)
+
+```
+
+> The complete code can be found in [main_faceextract_image.py]()
+
+<br />
+
+
 ## Final Thoughts
 
 

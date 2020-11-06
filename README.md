@@ -453,7 +453,7 @@ except Exception as error:
 
 FaceDetect provides you with a way to extract the faces from an image and load them as individual images that can be saved locally.
 
-![]()
+![](https://github.com/DoryAzar/FaceDetectPython/blob/master/outputs/main_faceextract_image_output.png)
 
 ```python
 
@@ -468,7 +468,7 @@ except Exception as error:
 
 ```
 
-> The complete code can be found in [main_faceextract_image.py]()
+> The complete code can be found in [main_faceextract_image.py](https://github.com/DoryAzar/FaceDetectPython/blob/master/main_faceextract_image.py)
 
 <br />
 

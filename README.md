@@ -499,6 +499,33 @@ except Exception as error:
 
 <br  />
 
+7. Recognize faces in a video or a webcam
+
+FaceDetect allows you to recognize faces in a video or a webcam based on a dictionary of known people faces. 
+If it finds matches, it  will identify them on the video or webcam canvas with a green rectangle along with the respective names (provided). 
+The unknown faces will be identified with a red rectangle labelled 'Unknown'.
+
+![]()
+
+```python
+
+# Set the method to recognize and provide a dictionary of known faces names and image path
+facedetector = FaceDetect({'method': 'recognize', 'known-faces': {'John': 'resources/person1.png',
+                                                                  'Jane': 'resources/person2.png'}})
+
+try:
+    facedetector.start()
+
+except Exception as error:
+    print(error)
+
+
+```
+
+> The complete code can be found in [main_recognize_video.py]()
+
+<br  />
+
 
 ## Final Thoughts
 

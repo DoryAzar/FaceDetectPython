@@ -1,5 +1,5 @@
-# main_detection_image.py
-# Usage: %python main_detection_image.py
+# main_faceextract_image.py
+# Usage: %python main_faceextract_image.py
 
 # Import the FaceDetect class
 from FaceDetect.facedetect import FaceDetect

@@ -198,7 +198,6 @@ What we do with the detections is really what this framework is all about.
 On one hand, it provides cool native features such as drawing rectangles around them, labeling them, recognizing the faces etc.
 On the other, it provides a way to extend its capabilities by writing custom features
 
-![](https://github.com/DoryAzar/FaceDetectPython/blob/master/outputs/main_detection_webcam_output.png)
 
 #### Getting Started with FaceDetect
 
@@ -353,10 +352,78 @@ face_extracts           # Access to face extracted face image arrays
 
 ## Let's have some fun
 
+In this section, we will explore all the features that we developed as part of this project and illustrate them through examples. 
+The complete codes for all the examples are provided as part of the distributions. They all start with `main...` 
+and they are located in the root folder.
+
+Let's remember that the goal of the FaceDetect framework is to make it easy for novice developers to detect and recognize faces.
+You will notice that many of the features are executed in a few lines of code.
+
+**When you run the examples, an image or video canva opens up. You need to press 'q' on your keyboard to quit or just interrupt program.**
+
+### 1. Detect faces in an image
+
+In this first example, we will provide an image to FaceDetect and it will draw rectangles around the faces it finds in
+the image. 
+
+![](https://github.com/DoryAzar/FaceDetectPython/blob/master/outputs/main_detection_image_output.png)
+
+```python
+
+# Tell FaceDetect to use mode image
+facedetector  = FaceDetect({'mode': 'image'})
+
+# Tell FaceDetect to start detections on a desired image
+try:
+    facedetector.start('resources/people.jpg')  
+except Exception as error:
+    print(error)
+
+```
+
+> The complete code can be found in [main_detect_image.py](https://github.com/DoryAzar/FaceDetectPython/blob/master/main_detection_image.py)
+
+<br  />
+
+### 2. Detect faces in a video or a webcam
+
+FaceDetect also allows you to detect faces in videos or live webcams. Both these modalities are video streams 
+and are initialized in the same way. The only difference is that a video file needs to be provided if the desire is to detect faces
+in a pre-recorded video.
+
+![](https://github.com/DoryAzar/FaceDetectPython/blob/master/outputs/main_detection_webcam_output.png)
+
+```python
+
+# FaceDetect can be initialized in its default settings. It will run in mode video by default
+facedetector = FaceDetect() # {'mode': 'video'} is the default setting
+try:
+    facedetector.start()  # webcam 
+    # facedetector.start('<path to video>') for video
+
+except Exception as error:
+    print(error)
+
+```
+
+> The complete code can be found in [main_detect_webcam.py](https://github.com/DoryAzar/FaceDetectPython/blob/master/main_detection_webcam.py)
 
 
 <br />
 
+### 3. Detection settings
+
+Upon detection, FaceDetect draws rectangles around the detected faces in the canvas and prints the faces locations in the console (terminal or IDE console).
+You can turn these settings:
+
+```python
+
+# Set draw and print to False
+facedetect = FaceDetect({'draw': False, 'print': False})
+
+```
+
+<br />
 
 
 ## Final Thoughts

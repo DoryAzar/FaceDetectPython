@@ -3,7 +3,7 @@
 + Video Demo: 
 + Live Demo: 
 
-![](https://github.com/DoryAzar/e28/blob/master/independent-study/resources/facedetect1.png)
+![](https://github.com/DoryAzar/FaceDetectPython/blob/master/outputs/banner.png)
 
 <br />
 

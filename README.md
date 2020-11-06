@@ -22,15 +22,21 @@
 
 ## Project Status
 
+**All the features described below have been implemented for this project. 
+The core logic that we created is found in `FaceDetect > facedetect.py`**
+
 + The foundation for the framework has been completed. FaceDetect has been implemented and packaged as a class that just needs to be imported for usage.
 + The framework allows reading images, videos and webcam streams
 + The framework allows for customization in 2 ways: 
     1. By providing a settings dictionary to the constructor to adjust the native features
     2. By extending the FaceDetect class to create more elaborate features
 + Face Detection has been implemented for all 3 media. The faces can now be detected in images, videos and live webcams
-+ Ability to either draw the detections or print them to the console has been implemented
++ Ability to either draw rectangles around the detections or print them to the console has been implemented
 + Ability to extract detected faces into separate individual images has been implemented
 + Ability to detect facial features and draw them on top of either medium has been implemented
++ Ability to recognize faces in a video, webcam or image based on known faces provided as image inputs
++ Ability to identify recognized faces visually in a video, webcam or image
++ Ability to access detection and recognition data through extensibility for use in other programs 
 + All the features are documented in the README
 
 
@@ -54,7 +60,7 @@ Here are some of the features that we are considering. We will try to do as many
 + Extract detected faces in separate images from the main image
 + Detect and draw facial features (eyes, noses, ears etc.) 
 + Recognize previously saved faces in an image, video or live webcam 
-+ Generate live detections in a JSON format for extensibility
++ Generate live data from detections that can be shared and used in other programs (extensibility)
 
 <br />
 

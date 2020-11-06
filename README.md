@@ -472,6 +472,30 @@ except Exception as error:
 
 <br />
 
+### 6. Recognize faces in an image
+
+FaceDetect allows you to recognize faces in an image based on a dictionary of known people faces.
+
+![]
+
+```python
+
+# Set the method to recognize and provide a dictionary of known faces names and image path
+facedetector = FaceDetect({'mode': 'image', 'method': 'recognize', 'known-faces': {'John': 'resources/person1.png',
+                                                                                   'Jane': 'resources/person2.png'}})
+
+try:
+    facedetector.start('resources/people.jpg')
+
+except Exception as error:
+    print(error)
+
+```
+
+> The complete code can be found in [main_recognize_image.py]()
+
+<br  />
+
 
 ## Final Thoughts
 

@@ -23,7 +23,7 @@
 ## Project Status
 
 **All the features described below have been implemented for this project. 
-The core logic that we created can be found in [FaceDetect > facedetect.py](https://github.com/DoryAzar/FaceDetectPython/blob/master/FaceDetect/facedetect.py)
+The core logic that we created can be found in [FaceDetect > facedetect.py](https://github.com/DoryAzar/FaceDetectPython/blob/master/FaceDetect/facedetect.py)**
 
 + The foundation for the framework has been completed. FaceDetect has been implemented and packaged as a class that just needs to be imported for usage.
 + The framework allows reading images, videos and webcam streams

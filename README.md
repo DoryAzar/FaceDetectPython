@@ -474,9 +474,12 @@ except Exception as error:
 
 ### 6. Recognize faces in an image
 
-FaceDetect allows you to recognize faces in an image based on a dictionary of known people faces.
+FaceDetect allows you to recognize faces in an image based on a dictionary of known people faces. 
+It compares the detected faces to the faces signatures that it computes from the images provided. If it finds matches, it
+will identify them on the image with a green rectangle along with the respective names (provided). The unknown faces will be
+identified with a red rectangle labelled 'Unknown'.
 
-![]
+![](https://github.com/DoryAzar/FaceDetectPython/blob/master/outputs/main_recognize_image_output.png)
 
 ```python
 
@@ -492,7 +495,7 @@ except Exception as error:
 
 ```
 
-> The complete code can be found in [main_recognize_image.py]()
+> The complete code can be found in [main_recognize_image.py](https://github.com/DoryAzar/FaceDetectPython/blob/master/main_recognize_image.py)
 
 <br  />
 

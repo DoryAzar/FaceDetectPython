@@ -1,11 +1,31 @@
 # FaceDetect: Face detection & recognition
 + By: Dory Azar
-+ Video Demo: 
-+ Live Demo: 
 
 ![](https://github.com/DoryAzar/FaceDetectPython/blob/master/outputs/banner.png)
 
 <br />
+
+## Project Presentation
+
+### Highlight Video (5 min): [coming soon]
+### Full Presentation Video (52:33): [coming soon]
+    
+#### Timeline
++ Project Presentation: 0:01
++ Contribution: 3:08
++ Code Walk-through: 4:09
++ External resources: 12:09
++ Getting started with examples: 21:01
++ Example 1 - Detecting Faces in a webcam: 22:03
++ Example 2 - Detecting Faces in images: 28:41
++ Example 3 - Draw face features: 32:49
++ Example 4 - Extract faces from image: 36:41
++ Example 5 - Recognize faces in an image: 38:41
++ Example 6 - Recognize faces in a webcam: 41:36
++ Example 7 - Extensibility: 42:52
++ Thank you and Goodbye: 50:47
+
+<br  />
 
 ## Content
 

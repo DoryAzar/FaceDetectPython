@@ -5,10 +5,25 @@
 
 <br />
 
-## Project Presentation
+
+## Content
+
++ [Project Video Presentations](https://github.com/DoryAzar/FaceDetectPython#project-video-presentations)
++ [Project Status](https://github.com/DoryAzar/FaceDetectPython#project-status)
++ [Project Synopsis](https://github.com/DoryAzar/FaceDetectPython#project-synopsis)
++ [Resources](https://github.com/DoryAzar/FaceDetectPython#resources)
++ [Let's get started](https://github.com/DoryAzar/FaceDetectPython#lets-get-started)
++ [Let's get through the basics](https://github.com/DoryAzar/FaceDetectPython#lets-get-through-the-basics)
++ [Let's have some fun](https://github.com/DoryAzar/FaceDetectPython#lets-have-some-fun)
++ [Learnings and Opportunities](https://github.com/DoryAzar/FaceDetectPython#learnings-and-opportunities)
++ [Known Issues](https://github.com/DoryAzar/FaceDetectPython#known-issues)
+
+<br />
+
+## Project Video Presentations
 
 ### Highlight Video (5 min): [coming soon]
-### Full Presentation Video (52:33): [coming soon]
+### Full Tutorial Video (52:33): [coming soon]
     
 #### Timeline
 + Project Presentation: 0:01
@@ -26,19 +41,6 @@
 + Thank you and Goodbye: 50:47
 
 <br  />
-
-## Content
-
-+ [Project Status](https://github.com/DoryAzar/FaceDetectPython#project-status)
-+ [Project Synopsis](https://github.com/DoryAzar/FaceDetectPython#project-synopsis)
-+ [Resources](https://github.com/DoryAzar/FaceDetectPython#resources)
-+ [Let's get started](https://github.com/DoryAzar/FaceDetectPython#lets-get-started)
-+ [Let's get through the basics](https://github.com/DoryAzar/FaceDetectPython#lets-get-through-the-basics)
-+ [Let's have some fun](https://github.com/DoryAzar/FaceDetectPython#lets-have-some-fun)
-+ [Final Thoughts](https://github.com/DoryAzar/FaceDetectPython#final-thoughts)
-+ [Known Issues](https://github.com/DoryAzar/FaceDetectPython#known-issues)
-
-<br />
 
 ## Project Status
 

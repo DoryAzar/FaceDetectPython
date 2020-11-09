@@ -549,7 +549,23 @@ except Exception as error:
 
 ## Learnings and Opportunities
 
+### Learnings
 
+Many of the concepts learned have been applied in building this framework. Creating a framework and modeling it in a way
+that makes it easy for other developers to use was the most interesting learning. We need to constantly put ourselves in
+shoes of the developer who is going to use the code in order to get it right.
+
+The second most interesting learning is that there are no ideas impossible to achieve with all the resources available to
+us. A big part of executing ideas nowadays is to be able to identify the pieces that could be reused from somebody else's work and building
+on top them as opposed to "reinventing the wheel".
+
+### Opportunities
+
+We chose OpenCV mainly for doing high-performance real-time detections using videos and webcams. However, OpenCV requires
+a significant effort to set up which goes against the ease of use that we are hoping for.
+
+There are other libraries that have been built on top of OpenCV to  simplify its usage (i.e. Simple CV is an example).
+This project could definitely be extended to explore all these libraries and find one that is simpler to use and set up.
 
 <br />
 

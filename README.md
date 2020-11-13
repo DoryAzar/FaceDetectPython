@@ -22,8 +22,8 @@
 
 ## Project Video Presentations
 
-### Highlight Video (5 min): [coming soon]
-### Full Tutorial Video (52:33): [coming soon]
+### Highlight Video (5:50 min): [watch video](https://youtu.be/_9X6k3UWiH8)
+### Full Walk-through Video (52:33): [watch walk-through](https://youtu.be/p5B9NwyZlBE)
     
 #### Timeline
 + Project Presentation: 0:01

@@ -96,7 +96,7 @@ Here are some of the features that we are considering. We will try to do as many
 
 + **Open CV**: 
     
-    While Open CV is a great library to implement face detection and recognition, it will mainly be used in this project for capture a stream from the webcam.
+    While Open CV is a great library to implement face detection and recognition, it will mainly be used in this project for capturing a stream from the webcam.
     
     [Open CV Documentation](https://docs.opencv.org/master/) 
 
@@ -106,7 +106,7 @@ Here are some of the features that we are considering. We will try to do as many
 
 ### Requirements
 
-There are several libraries and packages needed to run this program successfully.  We will provide the instructions on how to download on a Mac/Linux machines:
+There are several libraries and packages needed to run this program successfully.  We will provide the instructions on how to download on Mac/Linux machines:
 
 #### Python 3.8+
 This program and its dependencies have only been tested with Python 3.8 
@@ -232,7 +232,7 @@ On the other, it provides a way to extend its capabilities by writing custom fea
    
     ```
            
-3. Instantiate a FaceDetect object. A `settings` string in a JSON format can be passed to the constructor to use different features of FaceDetect. Initially, we will not pass any to run FaceDetect in its default settings.
+3. Instantiate a FaceDetect object. A `settings` dictionary  can  be passed  to the constructor to use different features of FaceDetect. Initially, we will not pass any to run FaceDetect in its default settings.
         
      ```python
    
@@ -381,7 +381,7 @@ and they are located in the root folder.
 Let's remember that the goal of the FaceDetect framework is to make it easy for novice developers to detect and recognize faces.
 You will notice that many of the features are executed in a few lines of code.
 
-**When you run the examples, an image or video canva opens up. You need to press 'q' on your keyboard to quit or just interrupt program.**
+**When you run the examples, an image or video canva opens up. You need to press 'q' on your keyboard to quit or you could just interrupt the program.**
 
 ### 1. Detect faces in an image
 
@@ -521,7 +521,7 @@ except Exception as error:
 
 <br  />
 
-7. Recognize faces in a video or a webcam
+### 7. Recognize faces in a video or a webcam
 
 FaceDetect allows you to recognize faces in a video or a webcam based on a dictionary of known people faces. 
 If it finds matches, it  will identify them on the video or webcam canvas with a green rectangle along with the respective names (provided). 
@@ -555,7 +555,7 @@ except Exception as error:
 
 Many of the concepts learned have been applied in building this framework. Creating a framework and modeling it in a way
 that makes it easy for other developers to use was the most interesting learning. We need to constantly put ourselves in
-shoes of the developer who is going to use the code in order to get it right.
+the shoes of the developer who is going to use the code in order to get it right.
 
 The second most interesting learning is that there are no ideas impossible to achieve with all the resources available to
 us. A big part of executing ideas nowadays is to be able to identify the pieces that could be reused from somebody else's work and building
@@ -566,7 +566,7 @@ on top them as opposed to "reinventing the wheel".
 We chose OpenCV mainly for doing high-performance real-time detections using videos and webcams. However, OpenCV requires
 a significant effort to set up which goes against the ease of use that we are hoping for.
 
-There are other libraries that have been built on top of OpenCV to  simplify its usage (i.e. Simple CV is an example).
+There are other libraries that have been built on top of OpenCV to simplify its usage (i.e. Simple CV is an example).
 This project could definitely be extended to explore all these libraries and find one that is simpler to use and set up.
 
 <br />

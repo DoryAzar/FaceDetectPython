@@ -14,7 +14,6 @@
 + [Let's get started](https://github.com/DoryAzar/FaceDetectPython#lets-get-started)
 + [Let's get through the basics](https://github.com/DoryAzar/FaceDetectPython#lets-get-through-the-basics)
 + [Let's have some fun](https://github.com/DoryAzar/FaceDetectPython#lets-have-some-fun)
-+ [Learnings and Opportunities](https://github.com/DoryAzar/FaceDetectPython#learnings-and-opportunities)
 + [Known Issues](https://github.com/DoryAzar/FaceDetectPython#known-issues)
 
 <br />

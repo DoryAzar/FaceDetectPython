@@ -256,13 +256,21 @@ class FaceDetect:
         a method determined in the settings """
 
         method = self.settings['method'] if self.__get_setting('method') else None
+        custom = self.settings['custom'] if self.__get_setting('custom') else None
+
+        try:
+            if method and method != 'detect':
+                self.__getattribute__('_FaceDetect__' + method)()
+
+            if type(custom) is str:
+                self.__getattribute__(custom)()
 
         # Execute method if it exists
-        try:
-            if method and self.__get_setting('custom'):
-                self.__getattribute__(method)()
-            elif method and method != 'detect':
-                self.__getattribute__('_FaceDetect__' + method)()
+        # try:
+        #     if method and self.__get_setting('custom'):
+        #         self.__getattribute__(method)()
+        #     elif method and method != 'detect':
+        #         self.__getattribute__('_FaceDetect__' + method)()
 
         # Generate exception if the method does not exist
         except AttributeError:

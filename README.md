@@ -8,7 +8,6 @@
 
 ## Content
 
-+ [Project Video Presentations](https://github.com/DoryAzar/FaceDetectPython#project-video-presentations)
 + [Project Status](https://github.com/DoryAzar/FaceDetectPython#project-status)
 + [Project Synopsis](https://github.com/DoryAzar/FaceDetectPython#project-synopsis)
 + [Resources](https://github.com/DoryAzar/FaceDetectPython#resources)
@@ -19,28 +18,6 @@
 + [Known Issues](https://github.com/DoryAzar/FaceDetectPython#known-issues)
 
 <br />
-
-## Project Video Presentations
-
-### Highlight Video (5:50 min): [watch video](https://youtu.be/_9X6k3UWiH8)
-### Full Walk-through Video (52:33): [watch walk-through](https://youtu.be/p5B9NwyZlBE)
-    
-#### Timeline
-+ Project Presentation: 0:01
-+ Contribution: 3:08
-+ Code Walk-through: 4:09
-+ External resources: 12:09
-+ Getting started with examples: 21:01
-+ Example 1 - Detecting Faces in a webcam: 22:03
-+ Example 2 - Detecting Faces in images: 28:41
-+ Example 3 - Draw face features: 32:49
-+ Example 4 - Extract faces from image: 36:41
-+ Example 5 - Recognize faces in an image: 38:41
-+ Example 6 - Recognize faces in a webcam: 41:36
-+ Example 7 - Extensibility: 42:52
-+ Thank you and Goodbye: 50:47
-
-<br  />
 
 ## Project Status
 
@@ -104,12 +81,33 @@ Here are some of the features that we are considering. We will try to do as many
 
 ## Let's get started
 
+### Environment
+
+#### Python 3.8+ - Anaconda installation
+
+One of the easiest ways to install Python is to use packaged distributions. Anaconda is one such distribution. 
+If you are new to Python, we recommend that you install the Anaconda distribution.
+
+[Download Anaconda](https://www.anaconda.com/download/)
+
+If you already have Anaconda installed, all you need to do is to update it and make sure that you are using the latest version
+of Python. You can do this from the command line or the terminal:
+```
+conda update conda
+conda update anaconda
+conda update python
+```
+
+#### Recommended Editor (IDE)
+
+You can use any development environment or editor that you are comfortable with. In this course, we will be using PyCharm.
+You can download the free Community Edition version.
+
+[Download PyCharm](https://www.jetbrains.com/pycharm/download/)
+
 ### Requirements
 
 There are several libraries and packages needed to run this program successfully.  We will provide the instructions on how to download on Mac/Linux machines:
-
-#### Python 3.8+
-This program and its dependencies have only been tested with Python 3.8 
 
 #### cmake
 
@@ -279,10 +277,9 @@ Here is a list of all the settings and their potential values:
 
 'draw': True                # Specifies whether or not the face detections should be drawn on the image or video. If set to False, nothing is displayed but detections are printed out in the console
 
-'custom': False             # If you wish to extend the FaceDetect class, set to True (check the next section for more information)
+'custom': ''                # If you wish to extend the FaceDetect class, specify the method that it needs to execute
 
 'method': 'detect'          # detect (default) to run detections. 'recognize' to run face recognition
-                            # If custom is set to True, the method setting will specify the callback method that you define in the extended class
 
 'print': True               # Prints the face locations and labels on the console. Set to False to disable
 
@@ -325,8 +322,8 @@ In order to do that you will need to extend the FaceDetect class.
 4. Instantiate an object of this created class
     ```python
     
-    # Set custom to True and pass the name of the method to its constructor
-    my_detector = MyDetector({'custom': True, 'method': 'main' })
+    # Pass the name of the custom method to execute at every detection cycle
+    my_detector = MyDetector({'custom': <name of custom method>, 'method': 'detect' })
     
     ```
  5. Start the detections 
@@ -546,28 +543,6 @@ except Exception as error:
 
 > The complete code can be found in [main_recognize_video.py](https://github.com/DoryAzar/FaceDetectPython/blob/master/main_recognize_video.py)
 
-<br  />
-
-
-## Learnings and Opportunities
-
-### Learnings
-
-Many of the concepts learned have been applied in building this framework. Creating a framework and modeling it in a way
-that makes it easy for other developers to use was the most interesting learning. We need to constantly put ourselves in
-the shoes of the developer who is going to use the code in order to get it right.
-
-The second most interesting learning is that there are no ideas impossible to achieve with all the resources available to
-us. A big part of executing ideas nowadays is to be able to identify the pieces that could be reused from somebody else's work and building
-on top them as opposed to "reinventing the wheel".
-
-### Opportunities
-
-We chose OpenCV mainly for doing high-performance real-time detections using videos and webcams. However, OpenCV requires
-a significant effort to set up which goes against the ease of use that we are hoping for.
-
-There are other libraries that have been built on top of OpenCV to simplify its usage (i.e. Simple CV is an example).
-This project could definitely be extended to explore all these libraries and find one that is simpler to use and set up.
 
 <br />
 

@@ -9,7 +9,7 @@ from FaceDetect.facedetect import FaceDetect
 # Params:
 # - settings (optional): Dictionary with settings to be passed to the FaceDetector
 #   * mode:  image or video (default)
-#   * custom: False (default). Set to True when the FaceDetect class is extended
+#   * custom: False (default). If you wish to extend the FaceDetect class, specify the method that it needs to execute
 #   * method: call native callback methods during detection or bypass with a custom method
 #   * draw: draws the detection on the canvas if set to True (default)
 #   * print: prints the face locations and labels on the console
